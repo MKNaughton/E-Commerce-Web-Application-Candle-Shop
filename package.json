@@ -1,0 +1,17 @@
+{
+  "name": "mkwad-project",
+  "version": "1.0.0",
+  "description": "WAD Final Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marykerin Naughton g00472916",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "msql": "^1.0.3",
+    "mysql": "^2.18.1"
+  }
+}
