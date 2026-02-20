@@ -49,17 +49,17 @@ The application is organised across seven main files with clear separation of co
 ## Features
 
 ### Authentication System
-![Login Page](images/Login page.png)
+![Login Page](images/Login%20page.png)
 - Login page with username (user@123.com) and password (pass) validation
 - Client-side email format validation using regex patterns
 - Server-side authentication through custom auth.js module
 - Password field cannot be empty using trim() validation
 - Visual error feedback with red borders and error messages
 - Failed login redirects with error message and retry link
-![Login Failed](images/Login failed page.png)
+![Login Failed](images/Login%20failed%20page.png)
 
 ### Product Catalog
-![Home Page](images/Welcome to my candleshop.png)
+![Home Page](images/Welcome%20to%20my%20candleshop.png)
 - Bootstrap 5 carousel displaying six candle products
 - Randomized starting slide on each page load using Math.random()
 - Product navigation with clickable links to individual product pages
@@ -68,7 +68,7 @@ The application is organised across seven main files with clear separation of co
 - Responsive carousel hides descriptions on mobile devices
 
 ### Shopping Cart
-![Add Candle to Cart](images/Add candle to cart.png)
+![Add Candle to Cart](images/Add%20candle%20to%20cart.png)
 - Add to cart functionality with quantity selection (0-6)
 - localStorage-based cart persistence across page navigation
 - Cart data stored as JSON objects {p:price, quan:quantity}
@@ -77,18 +77,18 @@ The application is organised across seven main files with clear separation of co
 - Automatic total calculation (quantity × price) for all items
 
 ### Checkout Process
-![Checkout Cart](images/Checkout cart.png)
+![Checkout Cart](images/Checkout%20cart.png)
 - Cart summary displaying all added products with quantities
 - Running total calculation across all cart items
 - Customer information form with name, email, address fields
 - HTML5 form validation (required attributes)
 - Payment method selection dropdown (credit card, PayPal, Stripe)
 - Place order button and back to shop navigation link
-![bottom of Checkout Page](images/bottom of checkout page.png)
-![unstyled Checkout](images/unstyled checkout place order page.png)
+![Bottom of Checkout Page](images/bottom%20of%20checkout%20page.png)
+![Unstyled Checkout](images/unstyled%20checkout%20place%20order%20page.png)
 
 ### Database Integration
-![SQL Database](images/SQL database for candleshop.png)
+![SQL Database](images/SQL%20database%20for%20candleshop.png)
 - MySQL database named g00472916 (student ID)
 - Parameterized queries prevent SQL injection attacks
 - Dynamic product rendering through EJS templates
