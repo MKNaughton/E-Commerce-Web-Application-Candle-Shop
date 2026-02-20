@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!--REF: Class lecture video-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+   <!-- REF: https://getbootstrap.com/docs/5.3/getting-started/introduction/ -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* REF: https://www.w3schools.com/css/css_background.asp */
+        body {
+            background-color:#0a192f; /* Navy background to match */;
+            font-family: Arial, sans-serif;
+        }
+        
+          /* REF: https://getbootstrap.com/docs/5.3/components/card/ */
+          .centerContent {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(48, 71, 94, 0.8); /* Blue semi-transparent to match */
+            border-radius: 8px;
+            box-shadow : 0 4px 15px rgba(0, 0, 0, 0.2);
+
+        }
+        
+        /* REF: https://www.w3schools.com/css/css3_images.asp */
+        .centerContent img {
+            max-width: 300px;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_text.asp */
+      
+          h1 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+    font-size: 3rem;
+    color: #1e88e5; /* Blue color to match */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1e88e5; /* Blue border to match */
+    padding-bottom: 10px;
+    text-align: center;
+
+        }
+        
+        h2 {
+            color:  #fff; /* White text to match */
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_text_decoration.asp */
+        #price {
+            font-weight: bold;
+            color:  #1e88e5;/* #0066cc;*/
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_form.asp */
+        select {
+    padding: 8px 12px;
+    border: 1px solid #1e88e5; /* Blue border */
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 16px;
+    width: 120px;
+    background-color: rgba(75, 101, 132, 0.5); /* Semi-transparent blue */
+    color: #fff; /* White text */
+}
+        
+        /* REF: https://www.w3schools.com/css/css3_buttons.asp */
+        button {
+            width: 150px;
+            padding: 10px 15px;
+            background-color: #1e88e5; /*#0066cc;*/
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        /* REF: https://www.w3schools.com/cssref/sel_hover.asp */
+        button:hover {
+            background-color: #1976d2;/* #0052a3;*/
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_link.asp */
+        a {
+            margin-top: 20px;
+            color:#1e88e5; /*#0066cc;*/
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid  #1e88e5;/*#0066cc;*/
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        /* REF: https://www.w3schools.com/cssref/sel_hover.asp */
+        a:hover {
+    background-color: rgba(30, 136, 229, 0.1); /* Transparent blue hover */
+    color: #fff; /* White text on hover */
+}
+        
+       /* REF: https://getbootstrap.com/docs/5.3/components/alerts/ */
+        .alert-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- REF: Class lecture video -->
+    <div class="centerContent">
+        <h1 id="product"><%= myMessage %></h1>
+        <h2>Manufacturer: <%= prodManufacturer%></h2>
+        <h2>Batch Info: <%= Batch_Info %></h2>
+        <h2 id="price">Price: &euro;<%= prodPrice%></h2>
+        <img src="image/<%= myImage%>" alt="<%= myMessage %> Image">
+        <br>
+        <select id="quantity" name="quantity">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        
+     <!-- REF: https://getbootstrap.com/docs/5.3/components/alerts/ -->
+<div id="alertMessage" class="alert-message">
+            Item added to cart successfully!
+        </div>
+        
+        <br>
+        <button onclick="addToCart()">Add to Cart</button>
+        <br>
+        
+        <!-- REF: https://www.w3schools.com/css/css3_flexbox.asp -->
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="home">Back to Home page</a>
+            <a href="checkout.html">View Cart & Checkout</a>
+        </div>
+    </div>
+
+    <script>
+        // REF: Class lecture video
+        function addToCart(){
+            console.log("Function called");
+            let product = document.getElementById("product").innerHTML;
+            let quantity = document.getElementById("quantity").value;
+            let price = parseFloat(document.getElementById("price").innerHTML.replace("Price: €", ""));
+            
+            // REF: https://www.w3schools.com/js/js_if_else.asp
+            if (quantity === "0") {
+                alert("Please select a quantity greater than 0");
+                return;
+            }
+            
+            let quan_price = {p:price, quan: quantity};//create an object to store quantity and price
+            localStorage.setItem(product, JSON.stringify(quan_price));
+            
+          // REF: https://www.w3schools.com/js/js_htmldom_css.asp
+          const alertMsg = document.getElementById("alertMessage");
+          alertMsg.style.display = "block";
+          alertMsg.innerHTML = quantity + " × " + product + " added to cart!";
+            
+             // REF: https://www.w3schools.com/js/js_timing.asp
+            setTimeout(function() {
+                alertMsg.style.display = "none";
+            }, 3000);
+        }
+
+    </script>
+    
+    <!-- Bootstrap 5 JS Bundle - REF: https://getbootstrap.com/docs/5.3/getting-started/introduction/ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

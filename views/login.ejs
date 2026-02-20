@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--UTF-8 is a universal character encoding allowing special characters.-->
+    <meta charset="UTF-8">  
+<!--meta tag allows for proper formatting of page whatever the device, eg on mobile devices. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font heading styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <title>Login Page</title>
+       <style>
+        /* CSS Flexbox to house user authenification function and display 
+           REF: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;               /* creates the flexbox */
+            justify-content: center;     /* centers the content horizontally */
+            align-items:center;         /* centers the content vertically */
+            height: 100vh;               /* Sets height to 100% of screen for proper scaling */
+            margin: 0;                   /* Removes default margin */
+            background-color:  #0a192f;    /*sets background to navy */
+        }
+        
+        /* Container for the login form ,CSS Card design pattern
+           REF: https://www.w3schools.com/howto/howto_css_cards.asp */
+        .login-container {
+            width: 350px;                /* Fixed width for the container */
+            padding: 20px;               /* Space inside the container */
+            background-color: rgba(48, 71, 94, 0.8); /* Darker blue background to match other pages */
+            border-radius: 5px;          /* slightly rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* shadow effect */
+        }
+        
+        /* Styling for the heading , CSS Typography 
+           REF: https://material.io/design/typography/the-type-system.html */
+        h1 {
+            font-family: 'Great Vibes', cursive;  /* Use the same font as other pages */
+    font-weight: normal;
+    font-size: 3rem;
+            text-align: center;          /* Center the heading */
+            margin-bottom: 30px;         /* Set a margin below the heading */
+            color:#1e88e5;    /* #333;                 /* Text colour: dark grey*/
+        }
+        
+        /* Form layout, creating space between user name and password
+           REF: https://www.w3schools.com/css/css_margin.asp*/
+        .form-group {
+            margin-bottom: 20px;         /* Space between form groups */
+        }
+        
+        /* label layout 
+           REF: https://www.w3.org/WAI/tutorials/forms/labels/ */
+
+        label {
+            display: block;              /* Makes the label a block element and places it above user input */
+            margin-bottom: 5px;          /* Space below the label */
+            font-weight: bold;           /* Bold text */
+            color: #1e88e5;  /* #333;                 /* text color :dark grey */
+        }
+        
+        /* Input fields , CSS created input boxes.
+           REF: https://www.w3schools.com/css/css_form.asp*/
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;                 /* Full width of the container */
+            padding: 10px;               /* Space inside the input */
+            border: 1px solid #1e88e5;      /* Light gray border */
+            border-radius: 4px;          /* Slightly rounded corners */
+            box-sizing: border-box;      /* Border included in width calculation */
+            font-size: 14px;          /* Text size */
+            background-color: rgba(75, 101, 132, 0.5); /* Semi-transparent blue */
+            color: #fff;                 /* White text */
+        }
+        
+        /* Inputs fields when focused, creates visual feedback when a field is currently in use.
+           REF:https://www.w3schools.com/cssref/sel_focus.asp  */
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #0066cc;       /* Blue border when focused */
+            outline: none;               /* Removes the default focus outline */
+        }
+        
+        /*  login button CSS clear login button creates hand curser when over button. 
+           REF: https://www.w3schools.com/css/css3_buttons.asp */
+        .login-btn {
+            width: 100%;                 /* Full width button */
+            padding: 10px 15px;          /* Space inside the button */
+            background-color:#1e88e5; /*#0066cc;   /* Blue background */
+            color: white;                /* White text */
+            border: none;                /* No border */
+            border-radius: 4px;          /* Slightly rounded corners */
+            cursor: pointer;             /* Hand cursor on hover */
+            font-size: 16px;             /* Text size */
+        }
+        
+        /* Button hover effect CSS, Changes colour when mouse is over button(visual feedback)
+           REF: https://www.w3schools.com/cssref/sel_hover.asp */
+        .login-btn:hover {
+            background-color:#1976d2; /*#0052a3;   /* Darker blue on hover */
+
+        }
+        
+        /* Error messages css, Highlights in colour validation error 
+           Reference: https://www.w3schools.com/css/css_display_visibility.asp */
+        .error-message {
+
+            color: #dc3545;              /* Red text for errors */
+            font-size: 14px;             /* Smaller text size */
+            margin-top: 5px;             /* Space above the message */
+            display: none;               /* Hidden by default until error occurs */
+
+        }
+        
+        /* Adds a red border to the field which has the error.
+           REF: https://www.w3schools.com/css/css_form.asp */
+        .form-group.error input {
+
+            border-color: #dc3545;       /* Red border for inputs  with errors */
+
+        }
+        
+        /* Shows error message when form group has error class.
+           REF: https://www.w3schools.com/cssref/pr_class_display.asp  */
+        .form-group.error .error-message {
+            display: block;              /* Makes the error message visible */
+        }
+        /*ERROR LOGIN FAILED */
+        /* Login Failed styling - better layout */
+.login-failed {
+    margin-top: 20px;            /* Space from form above */
+    padding: 0;                  /* Remove padding since it's inside container */
+    background-color: transparent; /* Transparent since container has background */
+    border: none;                /* Remove border */
+    border-radius: 0;            /* Remove border radius */
+    text-align: center;
+}
+
+.login-failed h2 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+    font-size: 3rem;             /* Same size as h1 */
+    color: #1e88e5;
+    margin-bottom: 30px;         /* Same margin as h1 */
+}
+
+.login-failed .error-text {
+    color: #dc3545;
+    font-size: 1.1rem;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+}
+
+.login-failed .btn-container {
+    margin-top: 30px;
+}
+
+.login-failed .btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    width: 120px;
+}
+
+.login-failed .btn-primary {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+}
+
+.login-failed .btn-secondary {
+    background-color: transparent;
+    color: #1e88e5;
+    border: 1px solid #1e88e5;
+}
+
+.login-failed .btn:hover {
+    background-color: #1976d2;
+    color: white;
+}
+
+    </style>
+    
+
+</head>
+<body>
+
+<!--Creates white card container that holds login form-->
+<!--REF: https://www.w3schools.com/howto/howto_css_login_form.asp -->
+    <div class="login-container"> 
+        <h1>Login Page</h1>
+
+         <!--login page with validation through post method
+            REF: https://www.w3schools.com/howto/howto_js_password_validation.asp */
+            -->
+        <form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
+           
+            <!-- Email form group validation and error message
+                REF: https://www.w3schools.com/js/js_validation_api.asp -->
+           
+            <div class="form-group" id="emailGroup">
+                <label for="username">Email</label>
+                <input type="email" id="username" name="username" placeholder="Enter your email">
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <!-- 
+                Password form group , input typed password not visable
+                REF: https://www.w3schools.com/howto/howto_js_password_validation.asp
+            -->
+            <div class="form-group" id="passwordGroup">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <div class="error-message" id="passwordError">Password cannot be empty</div>
+            </div>
+            
+            <!-- Submit button, sends form info when clicked.
+                 REF: https://www.w3schools.com/tags/tag_button.asp -->
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    
+
+<!-- Login Failed Section (hidden by default) -->
+
+<div id="loginFailedSection" class="login-failed" style="display: none;">
+    <h2>Login Failed</h2>
+    <div class="error-text">Invalid username or password.</div>
+    <div class="btn-container">
+          <button onclick="showLoginForm()" class="btn btn-primary">Try Again</button>
+        <a href="/home" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+</div>
+    <script>
+        
+        /*
+         * Returns true if the form is valid, false otherwise
+         * REF: https://www.w3schools.com/js/js_validation.asp
+         * REF: https://webdevetc.com/blog/javascript-form-validation/
+         */
+        function validateForm() {
+            // Gets values from the form fields username and password
+            let isValid = true;  
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // DOM reset previous error state
+            
+            document.getElementById('emailGroup').classList.remove('error');
+            document.getElementById('passwordGroup').classList.remove('error');
+            
+            // Email validation
+            if (!email || !validateEmail(email)) {
+                // Adds error class to show the error message
+                document.getElementById('emailGroup').classList.add('error');
+                isValid = false;  // Form is not valid
+            }
+            
+            // Password validation if password field is left empty.
+            // REF:https://www.w3schools.com/jsref/jsref_trim_string.asp
+            
+
+            if (!password.trim()) {
+                // Add error class to show the error message
+                document.getElementById('passwordGroup').classList.add('error');
+                isValid = false;  // Form is not valid
+
+            }
+            
+            // Return validation 
+            return isValid;
+
+        }
+
+        // Function to show login failed section
+function showLoginFailed() {
+    document.querySelector('.login-container form').style.display = 'none';
+    document.getElementById('loginFailedSection').style.display = 'block';
+}
+
+// Function to show login form again
+function showLoginForm() {
+    document.querySelector('.login-container form').style.display = 'block';
+    document.getElementById('loginFailedSection').style.display = 'none';
+}
+
+// Check if there's a login error in URL
+if (window.location.search.includes('error=login_failed')) {
+    showLoginFailed();
+}
+        
+        /*
+         * Helper function to validate the email format using regex, to prevent invalid email inputs.
+         * REF: https://www.w3resource.com/javascript/form/email-validation.php
+         * REF: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+         */
+            function validateEmail(email) {
+
+               const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              return re.test(String(email).toLowerCase());
+
+        }
+
+    </script>
+</body>
+
+</html>
