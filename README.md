@@ -106,6 +106,9 @@ The application is organised across seven main files with clear separation of co
 
 ## Getting Started
 
+git clone https://github.com/MKNaughton/E-Commerce-Web-Application-Candle-Shop.git
+cd E-Commerce-Web-Application-Candle-Shop
+
 ### Prerequisites
 - Node.js (version 14 or higher)
 - MySQL Server (version 8.0 or higher)
