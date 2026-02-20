@@ -85,7 +85,7 @@ The application is organised across seven main files with clear separation of co
 - Payment method selection dropdown (credit card, PayPal, Stripe)
 - Place order button and back to shop navigation link
 ![Bottom of Checkout Page](images/bottom%20of%20checkout%20page.png)
-![Unstyled Checkout](images/unstyled%20checkout%20place%20order%20page.png)
+
 
 ### Database Integration
 ![SQL Database](images/SQL%20database%20for%20candleshop.png)
