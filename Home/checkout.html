@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Candle Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* REF: https://www.w3schools.com/css/css_background.asp */
+        body {
+            background-color: #0a192f; /* Navy background */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        
+       /* REF: https://getbootstrap.com/docs/5.3/components/card/ */
+        .checkout-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(173, 216, 230, 0.2); /* Transparent light blue */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_text.asp */
+        h1 {
+            color:  #1e88e5; /* Blue text matching the line */
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* REF: https://www.w3schools.com/css/css3_borders.asp */
+        .cart-box {
+            background-color:rgba(75, 101, 132, 0.5);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #1e88e5;
+           /* border: 1px solid #e1e5eb;*/
+           /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);*/
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_text.asp */
+        .cart-title {
+            color:#1e88e5; /*#0a192f;/* Navy text */
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #1e88e5;
+           /* border-bottom: 1px solid #e1e5eb;*/
+            text-align: center;
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_font.asp */
+        #cart_items {
+            font-size: 1rem;
+            color: #1e88e5;
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_border.asp */
+        #total_price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #1e88e5; /* #0066cc;*/
+            color: #1e88e5;
+        }
+        
+        /* REF: Class material */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #1e88e5; /* Blue text matching the line */       /*#0a192f;*/
+            margin-top: 15px;
+        }
+        
+        /* REF: Class material */
+        input, select, textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c0c0c0;   /* #ddd;*/
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: rgba(173, 216, 230, 0.2); /* Translucent light blue */
+            color: #fff;
+
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_form.asp */
+        input:focus, textarea:focus, select:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
+            background-color: rgba(173, 216, 230, 0.3); /* more opaque when focused */
+        }
+        
+        /* REF: Class material */
+        button[type="submit"] {
+           /* margin-top: 20px;*/
+            background-color: #0067ff;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* REF: Class material */
+        button[type="submit"]:hover {
+            background-color: #1976d2;   /* #0052a3;*/
+        }
+        
+        /* REF: https://www.w3schools.com/css/css_link.asp */
+        a {
+            color:#1e88e5; /* #0066cc;*/
+            text-decoration: none;
+            padding: 11px 20px;
+            border: 1px solid #1e88e5; /* #0066cc;*/
+            border-radius: 4px;
+            display: inline-block;
+            margin-left: 15px;
+            background-color: transparent;
+            transition: background-color 0.3s;
+        }
+        
+        /* REF: https://www.w3schools.com/cssref/sel_hover.asp */
+        a:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        /* REF: https://www.w3schools.com/css/css3_flexbox.asp */
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+           /* Blue horizontal line
+           REF: https://www.w3schools.com/css/css_border.asp */
+
+        .blue-line {
+            border-bottom: 2px solid #1e88e5;
+            margin: 20px 0;
+        }
+        /* calligraphy font to headings only */
+ h1, .cart-title {
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+}
+
+/* Adjust sizes */
+ h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.cart-title {
+    font-size: 2.2rem;
+}
+
+    </style>
+</head>
+<body>
+    <!--Checkout container: main wrapper for checkout page-->
+    <!-- REF: https://getbootstrap.com/docs/5.3/components/card/  -->
+     
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <!--Cart display for products, prices and totals
+         REF: https://www.w3schools.com/css/css3_borders.asp-->
+        <div class="cart-box">
+            <div class="cart-title">Cart</div>
+            <div id="cart_items"></div>
+            <div id="total_price"></div>
+        </div>
+        
+        <form><!--Customer input in order to proceed with purchase-->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="address">Address:</label>
+            <!--Addres textarea  to allow multi line input for delievery address-->
+            <textarea id="address" name="address" rows="3" required></textarea>
+            
+            <label for="payment">Payment Method:</label>
+            <select id="payment" name="payment">
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="stripe">Stripe</option>
+            </select>
+            
+            <div class="action-buttons">
+                <button type="submit">Place Order</button>
+                <a href="home">Back to shop</a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // REF: Class material
+        let cost_allItems = 0;
+        for(i = 0; i < localStorage.length; i++) {
+            let product = localStorage.key(i);
+            //console.log(product);
+            let content = JSON.parse(localStorage.getItem(product));
+            //console.log(content);
+            let total_cost = parseInt(content.quan) * parseFloat(content.p);
+            cost_allItems += total_cost; 
+            if (content.quan > 0) {
+                document.getElementById("cart_items").innerHTML += product + " x " + content.quan + " = €" + total_cost.toFixed(2) + "<br>";
+            }
+            document.getElementById("total_price").innerHTML = "Total: €" + cost_allItems.toFixed(2);
+        }
+    </script>
+    
+    <!-- Bootstrap 5 JS Bundle - REF: https://getbootstrap.com/docs/5.3/getting-started/introduction/ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
