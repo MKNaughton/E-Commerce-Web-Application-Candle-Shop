@@ -84,8 +84,8 @@ The application is organised across seven main files with clear separation of co
 - HTML5 form validation (required attributes)
 - Payment method selection dropdown (credit card, PayPal, Stripe)
 - Place order button and back to shop navigation link
-![Bottom of Checkout Page](images/bottom of checkout page.png)
-![Unstyled Checkout](images/unstyled checkout place order page.png)
+![bottom of Checkout Page](images/bottom of checkout page.png)
+![unstyled Checkout](images/unstyled checkout place order page.png)
 
 ### Database Integration
 ![SQL Database](images/SQL database for candleshop.png)
